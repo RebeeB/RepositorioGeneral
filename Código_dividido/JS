@@ -1,0 +1,16 @@
+function agregarEmpleado() {
+    var nombre = document.getElementById('nombre').value;
+    var apellido = document.getElementById('apellido').value;
+    var correo = document.getElementById('correo').value;
+    var departamento = document.getElementById('departamento').value;
+
+    var listatrabajador = document.getElementById('listatrabajador');
+    var listItem = document.createElement('li');
+    listItem.textContent = `${nombre} ${apellido} - ${correo} (${departamento})`;
+    listatrabajador.appendChild(listItem);
+
+    document.getElementById('nombre').value = '';
+    document.getElementById('apellido').value = '';
+    document.getElementById('correo').value = '';
+    document.getElementById('departamento').value = '';
+}
