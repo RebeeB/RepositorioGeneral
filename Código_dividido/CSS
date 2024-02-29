@@ -1,0 +1,28 @@
+body {
+    background: #8360c3;
+    background: -webkit-linear-gradient(to right, #2ebf91, #8360c3);
+    background: linear-gradient(to right, #2ebf91, #8360c3);
+    color: white;
+}
+
+.container-split {
+    display: flex;
+    height: 100vh;
+}
+
+.left-pane {
+    flex: 0 0 60%;
+    background-color: white;
+    padding: 20px;
+}
+
+.right-pane {
+    flex: 0 0 40%;
+    background-color: lightblue;
+    padding: 20px;
+}
+
+.listatrabajador {
+    list-style: none;
+    padding: 0;
+}
