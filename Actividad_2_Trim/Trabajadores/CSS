@@ -1,0 +1,42 @@
+function agregarEmpleado() {
+    var nombre = document.getElementById('nombre').value;
+    var apellido = document.getElementById('apellido').value;
+    var correo = document.getElementById('correo').value;
+    var departamento = document.getElementById('departamento').value;
+  
+    var listatrabajador = document.getElementById('listatrabajador');
+    var listItem = document.createElement('li');
+    listItem.textContent = `${nombre} ${apellido} - ${correo} (${departamento})`;
+    listatrabajador.appendChild(listItem);
+  
+    // Actualizar el resumen
+    actualizarResumen(departamento);
+  
+    document.getElementById('nombre').value = '';
+    document.getElementById('apellido').value = '';
+    document.getElementById('correo').value = '';
+    document.getElementById('departamento').value = '';
+  }
+  
+  function actualizarResumen(departamento) {
+    var resumenDepartamentos = document.getElementById('resumenDepartamentos');
+    var departamentos = resumenDepartamentos.getElementsByTagName('li');
+  
+    // Verificar si ya hay un elemento para el departamento
+    var departamentoExistente = Array.from(departamentos).find(
+      (elem) => elem.textContent.startsWith(departamento)
+    );
+  
+    if (departamentoExistente) {
+      // Si ya existe, actualizar el conteo
+      var conteo = parseInt(departamentoExistente.dataset.conteo, 10) + 1;
+      departamentoExistente.textContent = `${departamento} - ${conteo} trabajadores`;
+      departamentoExistente.dataset.conteo = conteo;
+    } else {
+      // Si no existe, crear un nuevo elemento
+      var nuevoItem = document.createElement('li');
+      nuevoItem.textContent = `${departamento} - 1 trabajador`;
+      nuevoItem.dataset.conteo = 1;
+      resumenDepartamentos.appendChild(nuevoItem);
+    }
+  }
