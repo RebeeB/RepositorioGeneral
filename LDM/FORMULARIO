@@ -1,0 +1,246 @@
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Formulario de contacto</title>
+
+    <link rel="stylesheet" type="text/css" href="contact-form.css" />
+  </head>
+
+  <body>
+    <!-- formulario de contacto en html y css -->
+
+    <div class="contact_form">
+      <div class="formulario">
+        <h1>Formulario de contacto</h1>
+        <h3>Escríbenos y en breve los pondremos en contacto contigo</h3>
+
+        <form action="form.php" method="post">
+          <p>
+            <label for="nombre" class="colocar_nombre">
+              <h5>Nombre <span class="obligatorio">*</span></h5>
+
+              <input
+                id="input-nombre"
+                class="form-control"
+                type="text"
+                placeholder="Introduce tu nombre"
+              />
+            </label>
+          </p>
+
+          <p>
+            <label for="email" class="colocar_email">
+              <h5>Email <span class="obligatorio">*</span></h5>
+
+              <input
+                id="input-email"
+                class="form-control"
+                type="text"
+                placeholder="Introduce tu email"
+              />
+            </label>
+          </p>
+
+          <p>
+            <label for="telefone" class="colocar_telefono">
+              <h5>Teléfono</h5>
+
+              <input
+                id="input-telefono"
+                class="form-control"
+                type="text"
+                placeholder="Introduce tu teléfono"
+              />
+            </label>
+          </p>
+
+          <p>
+            <label for="website" class="colocar_website">
+              <h5>Sitio Web</h5>
+
+              <input
+                id="input-website"
+                class="form-control"
+                type="text"
+                placeholder="Escribe la URL de tu sitio web"
+              />
+            </label>
+          </p>
+
+          <p>
+            <label for="asunto" class="colocar_asunto">
+              <h5>Asunto <span class="obligatorio">*</span></h5>
+
+              <input
+                id="input-asunto"
+                class="form-control"
+                type="text"
+                placeholder="Escribe un asunto"
+              />
+            </label>
+          </p>
+
+          <p>
+            <label for="mensaje" class="colocar_mensaje">
+              <h5>Mensaje <span class="obligatorio">*</span></h5>
+
+              <textarea
+                id="input-mensaje"
+                class="form-control"
+                placeholder="Deja aquí tu comentario"
+                style="font-size: 16px; width: 408px; height: 120px"
+              >
+              </textarea>
+            </label>
+          </p>
+
+          <button type="submit" name="enviar_formulario" id="enviar">
+            <p>Enviar</p>
+          </button>
+
+          <p class="aviso">
+            <span class="obligatorio"> * </span>los campos son obligatorios.
+          </p>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
+
+CSS
+
+/* Importación de fuentes de google fonts */ 
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans);
+
+
+body{
+	height: 100%; 
+	font-family: 'Noto Sans', sans-serif;
+  background-color: #ab4493; 
+}
+
+
+.contact_form{	
+	width: 460px; 
+  height: auto;
+  margin: 40px auto;
+	border-radius: 10px;  
+	padding-top: 0px;
+	padding-bottom: 10px;  
+  background-color: #fbfbfb; 
+  padding-left: 30px; 
+}
+
+
+input{
+	background-color: #fbfbfb; 
+	width: 408px; 
+	height: 40px; 
+	border-radius: 5px;  
+	border-style: solid; 
+	border-width: 1px; 
+	border-color: #ab4493; 
+	margin-top: 0px;  
+	padding-left: 10px;
+  margin-bottom: 0px; 
+}
+
+
+textarea{
+  background-color: #fbfbfb; 
+	width: 405px; 
+	height: 150px; 
+	border-radius: 5px;  
+	border-style: solid; 
+	border-width: 1px; 
+	border-color: #ab4493; 
+	margin-top: 5px;  
+	padding-left: 10px;
+  margin-bottom: 20px; 
+  padding-top: 15px; 
+}
+
+
+label{
+  display: block; 
+	float: center; 	
+}
+
+
+button{
+	height: 45px; 
+	padding-left: 5px;
+	padding-right: 5px; 	
+	margin-bottom: 20px; 
+	margin-top: 10px; 	
+	text-transform: uppercase;
+	background-color: #ab4493; 
+	border-color: #ab4493; 
+	border-style: solid; 
+	border-radius: 10px;	
+	width: 420px;   
+  cursor: pointer;
+}
+
+
+button p{
+	color: #fff; 
+}
+
+
+span{
+	color: #ab4493; 
+}
+
+
+.aviso{
+	font-size: 13px;  
+	color: #0e0e0e;  
+}
+
+
+h1{
+	font-size: 39px;  
+	text-align: letf; 
+	padding-bottom: 20px; 
+	color: #ab4493;
+}
+
+
+h3{
+	font-size: 16px; 
+	padding-bottom: 30px;
+	color: #0e0e0e;   
+}
+h5{
+	margin-bottom: 5px;
+	padding-bottom: 0px;
+	color: #0e0e0e;   
+}
+
+p{
+	font-size: 14px; 
+	color: #0e0e0e; 
+}
+
+
+::-webkit-input-placeholder {
+ color: #a8a8a8;
+}
+
+
+::-webkit-textarea-placeholder {
+ color: #a8a8a8;
+}
+
+
+.formulario input:focus{
+	outline:0;
+	border: 1px solid #97d848;
+}
+
+
+.formulario textarea:focus{
+	outline:0;
+	border: 1px solid #97d848;
+}
