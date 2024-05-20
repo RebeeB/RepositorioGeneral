@@ -1,0 +1,135 @@
+CLASE USER
+package ejercicio_1;
+
+public class User{
+    private String usuario;
+    private String contraseña;
+    private String dni;
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setDNI(String dni) throws LongitudDNINoValidaException, UltimoDigitoNoLetraException {
+        if (dni.length() != 8) {
+            throw new LongitudDNINoValidaException("El DNI debe tener 9 dígitos.");
+        }
+
+        char ultimoCaracter = dni.charAt(dni.length() - 1);
+        if (!Character.isLetter(ultimoCaracter)) {
+            throw new UltimoDigitoNoLetraException("El último dígito del DNI debe ser una letra.");
+        }
+
+        this.dni = dni;
+    }
+
+    public String getDNI() {
+        return dni;
+    }
+}
+
+CLASE FORMULARIO
+
+package ejercicio_1;
+
+import ejercicio_1.Menu;
+import ejercicio_1.User;
+
+public class Formulario {
+    public static void main(String[] args) {
+        User user = new User();
+        Menu menu = new Menu(user);
+        menu.mostrarMenu();
+    }
+}
+
+CLASE MENU
+
+package ejercicio_1;
+
+import java.util.Scanner;
+
+public class Menu {
+	private User user;
+	private Scanner scanner;
+
+	public Menu(User user) {
+		this.user = user;
+		scanner = new Scanner(System.in);
+	}
+
+	public void mostrarMenu() {
+		int opcion = 0;
+		do {
+			System.out.println("MENU:");
+			System.out.println("1. Rellenar usuario");
+			System.out.println("2. Rellenar contraseña");
+			System.out.println("3. Rellenar DNI");
+			System.out.println("4. Finalizar");
+
+			try {
+				opcion = Integer.parseInt(scanner.nextLine());
+			} catch (NumberFormatException e) {
+				System.out.println("Por favor, introduce un número válido.");
+				continue; // Salta de nuevo al inicio del bucle
+			}
+
+			switch (opcion) {
+			case 1:
+				System.out.println("Introduce el usuario:");
+				user.setUsuario(scanner.nextLine());
+				break;
+			case 2:
+				System.out.println("Introduce la contraseña:");
+				user.setContraseña(scanner.nextLine());
+				break;
+			case 3:
+				try {
+					System.out.println("Introduce el DNI:");
+					user.setDNI(scanner.nextLine());
+				} catch (LongitudDNINoValidaException | UltimoDigitoNoLetraException e) {
+					System.out.println(e.getMessage());
+				}
+				break;
+			case 4:
+				if (user.getUsuario() != null && user.getContraseña() != null && user.getDNI() != null) {
+					System.out.println("Usuario: " + user.getUsuario());
+					System.out.println("Contraseña: " + user.getContraseña());
+					System.out.println("DNI: " + user.getDNI());
+					System.out.println("Programa finalizado.");
+					return;
+					// toString
+				} else {
+					System.out.println("Debe completar todos los datos antes de finalizar.");
+				}
+				break;
+			default:
+				System.out.println("Opción no válida. Inténtalo de nuevo.");
+			}
+		} while (opcion != 4);
+	}
+}
+
+class LongitudDNINoValidaException extends Exception {
+	public LongitudDNINoValidaException(String mensaje) {
+		super(mensaje);
+	}
+}
+
+class UltimoDigitoNoLetraException extends Exception {
+	public UltimoDigitoNoLetraException(String mensaje) {
+		super(mensaje);
+	}
+}
